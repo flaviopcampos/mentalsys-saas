@@ -1,0 +1,52 @@
+# Supabase Configuration for MentalSys SaaS
+
+project_id: mentalsys-saas
+
+# Database Settings
+database:
+  host: db.mentalsys-saas.supabase.co
+  port: 5432
+  database: postgres
+  user: postgres
+  
+# API Settings  
+api:
+  url: https://mentalsys-saas.supabase.co
+  anon_key: ${SUPABASE_ANON_KEY}
+  service_role_key: ${SUPABASE_SERVICE_ROLE_KEY}
+
+# Auth Settings
+auth:
+  enabled: true
+  jwt_secret: ${JWT_SECRET}
+  jwt_expiry: 3600
+  enable_signup: true
+  enable_magic_link: false
+
+# Storage Settings
+storage:
+  enabled: true
+  bucket_name: mentalsys-files
+  public: false
+
+# Functions Settings
+functions:
+  mentalsys-api:
+    enabled: true
+    entrypoint: backend/app/main.py
+    runtime: python3.9
+    environment:
+      - DATABASE_URL
+      - JWT_SECRET
+      - REDIS_URL
+      - ENVIRONMENT=production
+
+# Realtime Settings
+realtime:
+  enabled: true
+  tables:
+    - users
+    - clinics
+    - subscriptions
+    - patients
+    - appointments
