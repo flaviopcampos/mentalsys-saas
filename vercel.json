@@ -1,30 +1,12 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
-    }
-  ],
+  "name": "mentalsys-saas",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
   "env": {
-    "VITE_API_URL": "@vite_api_url",
-    "VITE_APP_NAME": "@vite_app_name"
-  },
-  "functions": {
-    "api/*.py": {
-      "runtime": "python3.9"
-    }
+    "VITE_API_URL": "https://mentalsys-saas.vercel.app/api",
+    "VITE_APP_NAME": "MentalSys"
   }
 }
