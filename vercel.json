@@ -5,8 +5,28 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
+  "framework": "vite",
+  "nodeVersion": "18.x",
   "env": {
     "VITE_API_URL": "https://mentalsys-saas.vercel.app/api",
-    "VITE_APP_NAME": "MentalSys"
-  }
+    "VITE_APP_NAME": "MentalSys",
+    "VITE_SUPABASE_URL": "https://placeholder.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "placeholder-anon-key"
+  },
+  "functions": {
+    "api/*.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max_old_space_size=4096"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
